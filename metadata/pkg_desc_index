@@ -1,0 +1,2 @@
+net-dns/bind 9.18.2: Berkeley Internet Name Domain - Name Server
+net-dns/bind-tools 9.18.2: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
