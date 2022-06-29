@@ -1,4 +1,4 @@
-BDEPEND=test? ( || ( >=dev-lang/python-3.11.0_beta1-r1:3.11 >=dev-lang/python-3.10.0_p1-r1:3.10 >=dev-lang/python-3.9.9-r1:3.9 ) dev-python/pytest dev-perl/Net-DNS-SEC dev-util/cmocka ) virtual/pkgconfig
+BDEPEND=test? ( || ( >=dev-lang/python-3.11.0_beta3:3.11 >=dev-lang/python-3.10.4:3.10 >=dev-lang/python-3.9.12:3.9 ) dev-python/pytest dev-perl/Net-DNS-SEC dev-util/cmocka ) virtual/pkgconfig
 DEFINED_PHASES=configure install postinst setup test
 DEPEND=acct-group/named acct-user/named dev-libs/jemalloc dev-libs/json-c:= dev-libs/libuv:= sys-libs/zlib dev-libs/openssl:=[-bindist(-)] caps? ( >=sys-libs/libcap-2.1.0 ) dnstap? ( dev-libs/fstrm dev-libs/protobuf-c ) doh? ( net-libs/nghttp2 ) geoip? ( dev-libs/libmaxminddb ) gssapi? ( virtual/krb5 ) idn? ( net-dns/libidn2 ) lmdb? ( dev-db/lmdb ) xml? ( dev-libs/libxml2 )
 DESCRIPTION=Berkeley Internet Name Domain - Name Server
@@ -12,5 +12,5 @@ RDEPEND=acct-group/named acct-user/named dev-libs/jemalloc dev-libs/json-c:= dev
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://downloads.isc.org/isc/bind9/9.18.4/bind-9.18.4.tar.xz
-_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	e9da88162e7a3c60376e80c2c2adcdfb	multilib	4fbbbc98f236f1b43acd99476bc3cd85	python-utils-r1	648fe6a039e87233d7f48da72cadb76f	python-any-r1	a3e9c0524a795d7f2767a2cf12a2e8c0	systemd	2736b403a83f194b59b767f3b344c2c1	tmpfiles	216aa76c3a6fcb5d893c23a0de86048f
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	e9da88162e7a3c60376e80c2c2adcdfb	multilib	4fbbbc98f236f1b43acd99476bc3cd85	python-utils-r1	32313e7e2fbfba8f62a99ef923fc923c	python-any-r1	a3e9c0524a795d7f2767a2cf12a2e8c0	systemd	2736b403a83f194b59b767f3b344c2c1	tmpfiles	216aa76c3a6fcb5d893c23a0de86048f
 _md5_=b35606ad8c9ec95838b5cfbcc2bf2266
