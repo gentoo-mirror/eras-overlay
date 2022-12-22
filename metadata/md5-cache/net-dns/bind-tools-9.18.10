@@ -10,6 +10,6 @@ LICENSE=MPL-2.0
 RDEPEND=dev-libs/libuv:= dev-libs/jemalloc dev-libs/openssl:= caps? ( sys-libs/libcap ) gssapi? ( virtual/krb5 ) idn? ( net-dns/libidn2:= ) libedit? ( dev-libs/libedit ) !libedit? ( readline? ( sys-libs/readline:= ) ) lmdb? ( dev-db/lmdb ) xml? ( dev-libs/libxml2 ) !net-dns/bind
 RESTRICT=test
 SLOT=0
-SRC_URI=https://downloads.isc.org/isc/bind9/9.18.8/bind-9.18.8.tar.xz
+SRC_URI=https://downloads.isc.org/isc/bind9/9.18.10/bind-9.18.10.tar.xz
 _eclasses_=toolchain-funcs	37a4612ce5522df5a100359a8dbc8491	multilib	5ca4e49abed8e3a2f7b56920eadee157	flag-o-matic	69394e25812406faa1f90edaf4969395
 _md5_=eb6a97ad7672afb3d413c43d96ff85df
