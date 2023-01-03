@@ -12,5 +12,5 @@ RDEPEND=acct-group/named acct-user/named dev-libs/jemalloc dev-libs/json-c:= dev
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://downloads.isc.org/isc/bind9/9.18.10/bind-9.18.10.tar.xz
-_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	37a4612ce5522df5a100359a8dbc8491	multilib	5ca4e49abed8e3a2f7b56920eadee157	python-utils-r1	1d1b325c00c1d24c564a1b49327ec3c5	python-any-r1	d2955aaac8daaaa69fcc6dc93ed19f29	systemd	5f4bb0758df2e483babf68cd517078ca	tmpfiles	216aa76c3a6fcb5d893c23a0de86048f
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	ec8bbc28394c7305b43ea07164bd8f5f	multilib	5ca4e49abed8e3a2f7b56920eadee157	python-utils-r1	1d1b325c00c1d24c564a1b49327ec3c5	python-any-r1	d2955aaac8daaaa69fcc6dc93ed19f29	systemd	5f4bb0758df2e483babf68cd517078ca	tmpfiles	216aa76c3a6fcb5d893c23a0de86048f
 _md5_=b35606ad8c9ec95838b5cfbcc2bf2266
