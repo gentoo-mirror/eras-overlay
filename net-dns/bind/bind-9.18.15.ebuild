@@ -38,14 +38,21 @@ DEPEND="
 	lmdb? ( dev-db/lmdb )
 	xml? ( dev-libs/libxml2 )
 "
+
+#		optinally for testing dnssec
+#		dev-python/dnspython[dnssec]
 BDEPEND="
 	test? (
 		${PYTHON_DEPS}
 		dev-python/pytest
+		dev-python/requests
+		dev-python/requests-toolbelt
+		dev-python/dnspython
 		dev-perl/Net-DNS-SEC
 		dev-util/cmocka
 	)
 "
+
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-bind )
 	sys-process/psmisc
