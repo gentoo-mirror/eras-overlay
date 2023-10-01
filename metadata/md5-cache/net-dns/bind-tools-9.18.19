@@ -11,5 +11,5 @@ RDEPEND=dev-libs/libuv:= dev-libs/jemalloc dev-libs/openssl:= caps? ( sys-libs/l
 RESTRICT=test
 SLOT=0
 SRC_URI=https://downloads.isc.org/isc/bind9/9.18.19/bind-9.18.19.tar.xz
-_eclasses_=toolchain-funcs	862d337d98edb576796827be2c6b11ca	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	be27a904c614cb93ae037762dc69bcc2
+_eclasses_=toolchain-funcs	fbbbc99d10168de2926e06da7169b8dc	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	be27a904c614cb93ae037762dc69bcc2
 _md5_=8b41063b4162aae6972f5536702e1016
