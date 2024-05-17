@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit python-any-r1 systemd tmpfiles
 
@@ -10,12 +10,10 @@ MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"
 
-RRL_PV="${MY_PV}"
-
 DESCRIPTION="Berkeley Internet Name Domain - Name Server"
 HOMEPAGE="https://www.isc.org/software/bind"
 SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz"
-
+S="${WORKDIR}/${MY_P}"
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
@@ -59,7 +57,6 @@ RDEPEND="${DEPEND}
 	!net-dns/bind-tools
 "
 
-S="${WORKDIR}/${MY_P}"
 RESTRICT="!test? ( test )"
 
 src_configure() {
