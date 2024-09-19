@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit python-any-r1 systemd tmpfiles
 
@@ -16,8 +16,8 @@ SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+caps dnsrps dnstap doc doh fixed-rrset idn geoip gssapi lmdb selinux static-libs test xml"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux"
+IUSE="dnsrps dnstap doc doh idn geoip gssapi lmdb selinux static-libs test xml"
 
 DEPEND="
 	acct-group/named
@@ -25,9 +25,10 @@ DEPEND="
 	dev-libs/jemalloc
 	dev-libs/json-c:=
 	dev-libs/libuv:=
+	dev-libs/userspace-rcu
+	sys-libs/libcap
 	sys-libs/zlib
 	dev-libs/openssl:=[-bindist(-)]
-	caps? ( >=sys-libs/libcap-2.1.0 )
 	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c )
 	doh? ( net-libs/nghttp2 )
 	geoip? ( dev-libs/libmaxminddb )
@@ -39,6 +40,7 @@ DEPEND="
 
 #		optinally for testing dnssec
 #		dev-python/dnspython[dnssec]
+#		and dev-python/pytest-xdist for the impatient
 BDEPEND="
 	test? (
 		${PYTHON_DEPS}
@@ -46,6 +48,7 @@ BDEPEND="
 		dev-python/requests
 		dev-python/requests-toolbelt
 		dev-python/dnspython
+		dev-python/hypothesis
 		dev-perl/Net-DNS-SEC
 		dev-util/cmocka
 	)
@@ -70,12 +73,10 @@ src_configure() {
 		--with-jemalloc
 		--with-json-c
 		--with-zlib
-		$(use_enable caps linux-caps)
 		$(use_enable dnsrps)
 		$(use_enable dnstap)
 		$(use_enable doh)
 		$(use_with doh libnghttp2)
-		$(use_enable fixed-rrset)
 		$(use_enable static-libs static)
 		$(use_enable geoip)
 		$(use_with geoip maxminddb)
@@ -94,7 +95,7 @@ src_test() {
 	# as root:
 	# sh bin/tests/system/ifconfig.sh up
 	# as portage:
-	# make check
+	# make -j8 check
 	# as root:
 	# sh bin/tests/system/ifconfig.sh down
 
@@ -137,8 +138,8 @@ src_install() {
 	keepdir /var/bind/{pri,sec,dyn} /var/log/named
 
 	fowners root:named /{etc,var}/bind /var/log/named /var/bind/{sec,pri,dyn}
-	fowners root:named /etc/bind/{bind.keys,named.conf}
-	fperms 0640 /etc/bind/{bind.keys,named.conf}
+	fowners root:named /etc/bind/named.conf
+	fperms 0640 /etc/bind/named.conf
 	fperms 0750 /etc/bind /var/bind/pri
 	fperms 0770 /var/log/named /var/bind/{,sec,dyn}
 
@@ -156,18 +157,5 @@ pkg_postinst() {
 		/usr/sbin/rndc-confgen -a
 		chown root:named /etc/bind/rndc.key || die
 		chmod 0640 /etc/bind/rndc.key || die
-	fi
-
-	# show only when upgrading to 9.18
-	if [[ -n "${REPLACING_VERSIONS}" ]] && ver_test "${REPLACING_VERSIONS}" -lt 9.18; then
-		elog "As this is a major bind version upgrade, please read:"
-		elog "   https://kb.isc.org/docs/changes-to-be-aware-of-when-moving-from-bind-916-to-918"
-		elog "for differences in functionality."
-		elog ""
-		ewarn "In particular, please note that bind-9.18 does not need a root hints file anymore"
-		ewarn "and is not shipped with one. If your current configuration specifies a root hints"
-		ewarn "file - usually called named.cache - bind will not start as it will not be able to"
-		ewarn "find the specified file. Best practice is to delete the offending lines that"
-		ewarn "reference named.cache file from your configuration."
 	fi
 }
