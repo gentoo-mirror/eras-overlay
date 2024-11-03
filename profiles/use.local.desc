@@ -8,5 +8,3 @@ net-dns/bind:doh - Enable DNS over HTTPS
 net-dns/bind:geoip - Enable GeoIP2 API from MaxMind
 net-dns/bind:gssapi - Enable gssapi support
 net-dns/bind:lmdb - Enable LMDB support
-net-dns/bind-tools:gssapi - Enable gssapi support
-net-dns/bind-tools:lmdb - Enable LMDB support
