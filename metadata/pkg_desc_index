@@ -1,0 +1,4 @@
+acct-group/dkimpy-milter 0: System group: dkimpy-milter
+acct-user/dkimpy-milter 0: user for dkimpy-milter
+dev-python/dkimpy-milter 1.2.3: Domain Keys Identified Mail (DKIM) signing/verifying milter for Postfix/Sendmail
+dev-python/pymilter 9999: module to enable python scripts to attach to Sendmail's libmilter API
